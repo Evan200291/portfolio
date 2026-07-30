@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Profile image placeholder</title>
+  <desc id="desc">Replace profile.jpg in the public assets folder with your portrait.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#183148"/>
+      <stop offset=".58" stop-color="#0b1523"/>
+      <stop offset="1" stop-color="#070b13"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#6ee7ff"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <g fill="none" stroke="#6ee7ff" stroke-opacity=".12">
+    <circle cx="400" cy="350" r="265"/>
+    <circle cx="400" cy="350" r="205"/>
+    <path d="M0 720L800 310M40 920L720 0M0 410L800 820"/>
+  </g>
+  <circle cx="400" cy="355" r="132" fill="#111d2c" stroke="url(#line)" stroke-width="5"/>
+  <path d="M168 862c26-176 114-278 232-278s206 102 232 278" fill="#111d2c" stroke="url(#line)" stroke-width="5"/>
+  <circle cx="400" cy="355" r="112" fill="#0a111d"/>
+  <path d="M200 850c31-148 102-226 200-226s169 78 200 226" fill="#0a111d"/>
+  <text x="400" y="934" fill="#9fb7c8" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="middle" letter-spacing="5">ENT HMUE MAUNG</text>
+</svg>
