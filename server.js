@@ -20,8 +20,7 @@ app.use(helmet({
   contentSecurityPolicy: false,
   crossOriginEmbedderPolicy: false
 }));
-app.use(compression());
-app.use(cors({
+const corsOptions = {
   origin(origin, callback) {
     const allowed = (process.env.ALLOWED_ORIGINS || '')
       .split(',')
@@ -35,7 +34,9 @@ app.use(cors({
 
     callback(new Error('Origin is not allowed by CORS.'));
   }
-}));
+};
+
+app.use(compression());
 app.use(express.json({ limit: '50kb' }));
 app.use(express.urlencoded({ extended: false, limit: '50kb' }));
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
@@ -49,6 +50,7 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
+app.use('/api', cors(corsOptions));
 app.use('/api/projects', projectRoutes);
 app.use('/api/contact', contactRoutes);
 
