@@ -65,12 +65,29 @@ The About page includes three ready-to-edit recommendation cards. In `public/abo
 
 If `MONGODB_URI` is omitted or MongoDB is unavailable, the site still runs with bundled project data and temporary in-memory contact messages. Configure MongoDB before production deployment so contact submissions persist.
 
+### Send contact-form submissions to Telegram
+
+The server can forward every valid contact submission to a private Telegram chat. Add these values to the server's `.env` file; do not add them to frontend JavaScript or commit them to Git:
+
+```env
+TELEGRAM_BOT_TOKEN=your_bot_token
+TELEGRAM_CHAT_ID=your_numeric_chat_id
+```
+
+Start a chat with your bot and send `/start` before retrieving the chat ID. On the server, this command prints updates containing the chat ID:
+
+```bash
+curl -s "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/getUpdates"
+```
+
+After adding the values, restart the app with `pm2 restart ent-portfolio --update-env`.
+
 ## API
 
 - `GET /api/health` - server and database status
 - `GET /api/projects` - all projects
 - `GET /api/projects/:slug` - one project
-- `POST /api/contact` - validate and save a contact message
+- `POST /api/contact` - validate, save, and optionally forward a contact message to Telegram
 
 Example contact payload:
 
