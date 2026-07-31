@@ -36,18 +36,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
-document.querySelectorAll('[data-tilt]').forEach((card) => {
-  if (window.matchMedia('(pointer: coarse), (prefers-reduced-motion: reduce)').matches) return;
-
-  card.addEventListener('pointermove', (event) => {
-    const rect = card.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `perspective(900px) rotateX(${y * -5}deg) rotateY(${x * 6}deg) translateY(-3px)`;
-  });
-  card.addEventListener('pointerleave', () => { card.style.transform = ''; });
-});
-
 document.querySelectorAll('[data-year]').forEach((node) => {
   node.textContent = new Date().getFullYear();
 });
@@ -89,15 +77,5 @@ window.createProjectCard = function createProjectCard(project) {
 };
 
 window.enableCardTilt = function enableCardTilt() {
-  document.querySelectorAll('[data-tilt]').forEach((card) => {
-    if (card.dataset.tiltReady || window.matchMedia('(pointer: coarse), (prefers-reduced-motion: reduce)').matches) return;
-    card.dataset.tiltReady = 'true';
-    card.addEventListener('pointermove', (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - .5;
-      const y = (event.clientY - rect.top) / rect.height - .5;
-      card.style.transform = `perspective(900px) rotateX(${y * -5}deg) rotateY(${x * 6}deg) translateY(-3px)`;
-    });
-    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
-  });
+  // Project cards use a restrained border and shadow hover treatment.
 };

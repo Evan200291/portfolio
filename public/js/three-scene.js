@@ -14,7 +14,7 @@ if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
     const nodes = [];
     const nodeGeometry = new THREE.SphereGeometry(0.045, 10, 10);
-    const nodePalette = [0x6ee7ff, 0xa78bfa, 0x34d399, 0xf59e0b];
+    const nodePalette = [0x176b82, 0x5967a2, 0x2d765b, 0x9a651d];
     const nodeMaterials = nodePalette.map((color) => new THREE.MeshBasicMaterial({ color }));
 
     for (let i = 0; i < 74; i += 1) {
@@ -50,7 +50,7 @@ if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
     const core = new THREE.Mesh(
       new THREE.IcosahedronGeometry(0.82, 2),
-      new THREE.MeshBasicMaterial({ color: 0xa78bfa, transparent: true, opacity: 0.09, wireframe: true })
+      new THREE.MeshBasicMaterial({ color: 0x5967a2, transparent: true, opacity: 0.12, wireframe: true })
     );
     group.add(core);
 
@@ -62,7 +62,7 @@ if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       starPositions[i + 2] = (Math.random() - .5) * 8;
     }
     starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-    const stars = new THREE.Points(starsGeometry, new THREE.PointsMaterial({ color: 0xffffff, size: .02, transparent: true, opacity: .45 }));
+    const stars = new THREE.Points(starsGeometry, new THREE.PointsMaterial({ color: 0x7d8f9a, size: .018, transparent: true, opacity: .28 }));
     scene.add(stars);
 
     let pointerX = 0;
@@ -85,7 +85,7 @@ if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const clock = new THREE.Clock();
     function animate() {
       const elapsed = clock.getElapsedTime();
-      group.rotation.y = elapsed * .11 + pointerX;
+      group.rotation.y = elapsed * .065 + pointerX;
       group.rotation.x += (pointerY - group.rotation.x) * .035;
       core.rotation.x = elapsed * .18;
       core.rotation.z = elapsed * .12;
